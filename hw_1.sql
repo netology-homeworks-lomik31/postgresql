@@ -20,7 +20,7 @@ CREATE TABLE track (
 id SERIAL PRIMARY KEY,
 name VARCHAR(50) NOT NULL,
 duration TIME NOT NULL,
-album INT NOT NULL REFERENCES album(id)
+album INT REFERENCES album(id)
 );
 CREATE TABLE collection_track (
 collection INT NOT NULL REFERENCES collection(id),
