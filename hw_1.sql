@@ -1,0 +1,43 @@
+CREATE TABLE genre (
+id SERIAL PRIMARY KEY,
+name VARCHAR(30) NOT NULL
+);
+CREATE  TABLE artist (
+id SERIAL PRIMARY KEY,
+name VARCHAR(50) NOT NULL
+);
+CREATE TABLE album (
+id SERIAL PRIMARY KEY,
+name VARCHAR(50) NOT NULL,
+year DECIMAL(4,0) NOT NULL
+);
+CREATE TABLE collection (
+id SERIAL PRIMARY KEY,
+name VARCHAR(50) NOT NULL,
+YEAR DECIMAL(4,0) NOT NULL
+);
+CREATE TABLE track (
+id SERIAL PRIMARY KEY,
+name VARCHAR(50) NOT NULL,
+duration TIME NOT NULL,
+album INT NOT NULL REFERENCES album(id)
+);
+CREATE TABLE collection_track (
+collection INT NOT NULL REFERENCES collection(id),
+track INT NOT NULL REFERENCES track(id)
+);
+CREATE TABLE album_artist (
+album INT NOT NULL REFERENCES album(id),
+artist INT NOT NULL REFERENCES artist(id)
+);
+CREATE TABLE artist_genre (
+artist INT NOT NULL REFERENCES artist(id),
+genre INT NOT NULL REFERENCES genre(id)
+);
+
+CREATE TABLE employee (
+id SERIAL PRIMARY KEY,
+name VARCHAR(30) NOT NULL,
+department VARCHAR(30) NOT NULL,
+boss INT NOT NULL REFERENCES employee(id)
+);
