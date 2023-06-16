@@ -37,7 +37,7 @@ VALUES ('Спойлер', '00:05:09', 7), ('Интроверт', '00:03:50', 7),
 
 
 INSERT INTO collection_track(collection, track)
-VALUES (1, 42), (2, 42), (2, 3), (3, 26), (4, 63);
+VALUES (1, 43), (2, 43), (2, 3), (3, 26), (4, 64);
 
 INSERT INTO album_artist(album, artist)
 VALUES (1, 3), (2, 3), (3, 3), (4, 2), (5, 2), (6, 1), (7, 1), (8, 4), (9, 4), (10, 5), (11, 5);
