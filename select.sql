@@ -6,7 +6,7 @@ WHERE duration = (SELECT max(duration) FROM track);
 
 SELECT name
 FROM track
-WHERE duration > '00:03:30';
+WHERE duration >= '00:03:30';
 
 SELECT name, year
 FROM collection
@@ -18,7 +18,7 @@ WHERE name NOT LIKE '% %';
 
 SELECT name
 FROM track
-WHERE lower(name) LIKE '%my%' OR lower(name) LIKE '%мой%';
+WHERE name ~* '( |^)my( |$)';
 
 -- задание 3
 
@@ -35,8 +35,13 @@ WHERE album NOTNULL AND year BETWEEN 2019 AND 2020;
 SELECT artist.name
 FROM artist
 JOIN album_artist ON album_artist.artist = artist.id
-JOIN album ON album_artist.album = album.id
-WHERE album.year != 2020
+WHERE artist.id NOT IN (
+	SELECT album_artist.artist
+	FROM album_artist
+	JOIN album ON album_artist.album = album.id
+	WHERE album.year = 2020
+	GROUP BY album_artist.artist
+)
 GROUP BY artist.name;
 
 SELECT collection.name
